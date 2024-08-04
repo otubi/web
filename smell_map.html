@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Geo Heatmap</title>
+  <title>Eco Guardian</title>
   <meta charset="utf-8">
   <link href="lib/geo-heatmap/GeoHeatmap.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="lib/geo-heatmap/ColorScaleLegend.css" media="screen" rel="stylesheet" type="text/css" />
@@ -62,7 +62,7 @@
           vars[keyval[0]] = keyval[1];
         }
       }
-      // Delete keys with null/undefined values
+      // Delete keys with null/uYYndefined values
       if (!keep_null_or_undefined_vars) {
         Object.keys(vars).forEach(function (key) {
           return (vars[key] == null || key == "") && delete vars[key];
@@ -81,7 +81,7 @@
       var query_vars = getQueryParas();
       // IMPORTANT: to update this page, remember to add new available years
       var available_years = ["2017", "2018", "2019", "2020", "2021"];
-      var available_types = ["smell", "user"];
+      var available_types = ["eco_guardian_smell", "eco_guardian_user"];
       year = available_years[0];
       type = available_types[0];
       if ("year" in query_vars) {
@@ -97,43 +97,37 @@
         }
       }
       var path;
-      /*
-        To update this map, add code for another year below,
-        ...so that you can access "smell_map.html?year=XXXX&type=smell" and "smell_map.html?year=XXXX&type=user"
-        ...which is necessary for updating the "analysis.html" page
-      */
       if (year == "2017") {
-        if (type == "smell") {
-          path = "smell_pgh_tracker/zipcode_metadata_smell_2017.json"
-        } else if (type == "user") {
-          path = "smell_pgh_tracker/zipcode_metadata_user_2017.json"
+        if (type == "eco_guardian_smell") {
+          path = "eco_guardian_tracker/zipcode_metadata_smell_2017.json";
+        } else if (type == "eco_guardian_user") {
+          path = "eco_guardian_tracker/zipcode_metadata_user_2017.json";
         }
       } else if (year == "2018") {
-        if (type == "smell") {
-          path = "smell_pgh_tracker/zipcode_metadata_smell_2018.json"
-        } else if (type == "user") {
-          path = "smell_pgh_tracker/zipcode_metadata_user_2018.json"
+        if (type == "eco_guardian_smell") {
+          path = "eco_guardian_tracker/zipcode_metadata_smell_2018.json";
+        } else if (type == "eco_guardian_user") {
+          path = "eco_guardian_tracker/zipcode_metadata_user_2018.json";
         }
       } else if (year == "2019") {
-        if (type == "smell") {
-          path = "smell_pgh_tracker/zipcode_metadata_smell_2019.json"
-        } else if (type == "user") {
-          path = "smell_pgh_tracker/zipcode_metadata_user_2019.json"
+        if (type == "eco_guardian_smell") {
+          path = "eco_guardian_tracker/zipcode_metadata_smell_2019.json";
+        } else if (type == "eco_guardian_user") {
+          path = "eco_guardian_tracker/zipcode_metadata_user_2019.json";
         }
       } else if (year == "2020") {
-        if (type == "smell") {
-          path = "smell_pgh_tracker/zipcode_metadata_smell_2020.json"
-        } else if (type == "user") {
-          path = "smell_pgh_tracker/zipcode_metadata_user_2020.json"
+        if (type == "eco_guardian_smell") {
+          path = "eco_guardian_tracker/zipcode_metadata_smell_2020.json";
+        } else if (type == "eco_guardian_user") {
+          path = "eco_guardian_tracker/zipcode_metadata_user_2020.json";
         }
       } else if (year == "2021") {
-        if (type == "smell") {
-          path = "smell_pgh_tracker/zipcode_metadata_smell_2021.json"
-        } else if (type == "user") {
-          path = "smell_pgh_tracker/zipcode_metadata_user_2021.json"
+        if (type == "eco_guardian_smell") {
+          path = "eco_guardian_tracker/zipcode_metadata_smell_2021.json";
+        } else if (type == "eco_guardian_user") {
+          path = "eco_guardian_tracker/zipcode_metadata_user_2021.json";
         }
       }
-      // Start loading data simultaneously
       $.when(
         // Load the GeoJSON that contains the zipcode boundaries
         $.getJSON("lib/geo-heatmap/zipcode_bound_geoJson.json", function (json) {
@@ -162,13 +156,11 @@
       var zipcode_metadata = data["zipcode_metadata"];
       var color_scale = d3.scale.linear().domain([0, 0.5, 1]).range(["#deebf7", "#6baed6", "#084594"]).interpolate(d3.interpolateLab);
 
-      // Set parameters
       var max_input = 1000;
-      if (type == "user") {
+      if (type == "eco_guardian_user") {
         max_input = 300;
       }
 
-      // Create the geo heatmap object
       var settings = {
         zipcode_bound_geoJson: data["zipcode_bound_geoJson"],
         zipcode_bound_info: data["zipcode_bound_info"],
@@ -194,9 +186,9 @@
           html += "    <td>Zipcode: " + zipcode + "</td>";
           html += "  </tr>";
           html += "  <tr>";
-          if (type == "smell") {
+          if (type == "eco_guardian_smell") {
             html += "    <td>Number of reports: " + zipcode_metadata[zipcode] + "</td>";
-          } else if (type == "user") {
+          } else if (type == "eco_guardian_user") {
             html += "    <td>Number of unique users: " + zipcode_metadata[zipcode] + "</td>";
           }
           html += "  </tr>";
@@ -212,12 +204,14 @@
       });
     }
 
-    $(loadData);
+    $(document).ready(function () {
+      loadData();
+    });
   </script>
 </head>
 
 <body>
-  <div id="map-container" class="noselect"></div>
+  <div id="map-container"></div>
   <div id="color-legend-container" class="noselect"></div>
 </body>
 

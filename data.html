@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Smell Pittsburgh</title>
+  <title>Community Reporting App</title>
   <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.css" media="screen" rel="stylesheet" type="text/css" />
   <link href="css/frame.css" media="screen" rel="stylesheet" type="text/css" />
@@ -49,82 +49,54 @@
       <div class="content-table flex-column">
         <div class="flex-row">
           <div class="flex-item flex-column">
-            <h2>Download Smell Report Data for Allegheny County</h2>
+            <h2>Report Deforestation Activities</h2>
             <hr>
             <p class="text">
-              We take every precaution to protect any personally identifiable data.
-              All information shown on the public map visualization for Smell PGH is anonymous and location data is skewed to protect your privacy.
-              Personal contact information you enter in the settings tab is not stored in our database.
-              Our backend database only contains anonymous User IDs created by your app service (Apple or Google Play).
+              Install the app onto your mobile devices.
+              The app allows you to report deforestation activities directly to local authorities.
+              Simply take a picture of the deforestation site, and the app will automatically tag the location using your device's GPS.
+              You can then send this report to your local LC5 representative.
             </p>
             <p class="text">
-              This data is in a <span class="highlight-text">CSV format</span>.
-              You can open it in Google Sheets, Excel, or any text editor.
-              Each smell report is a unique line item.
-              Each field in the line is separated by commas.
-              Data fields include:
+              The app also enables local authorities to communicate with the community. 
+              For instance, your local LC1 can send messages and updates regarding ongoing environmental protection efforts.
             </p>
-            <ul>
-              <li>Date and time of smell report</li>
-              <ul class="no-ul-margins">
-                <li>You can choose to download the data in UTC time or your local time</li>
-                <li>Your local time will be the time stamp on the machine you use to download the data</li>
-                <li>The date/time will be formatted as follows: 06/01/2016 01:47:52 -04:00</li>
-                <li>In the example above, the "-04:00" at the end of the string indicates time zone</li>
-              </ul>
-              <li>Smell value (a number 1 through 5, with 5 being the most severe)</li>
-              <li>Skewed latitude and longitude coordinates of smell report location</li>
-              <ul class="no-ul-margins">
-                <li>To protect user privacy, actual locations are NOT shown</li>
-                <li>lat/lon coordinates are randomly assigned, within a short radius of the actual location</li>
-              </ul>
-              <li>Zip code of smell report location</li>
-              <li>Smell description and symptoms linked to odor (if provided)</li>
-            </ul>
-            <span class="add-top-margin">Select the Pittsburgh city or enter ZIP codes:</span>
-            <div class="custom-dropdown large add-top-margin-small add-bottom-margin" id="region-dropdown">
-              <a tabindex="0" href="javascript:void(0)"><span></span></a>
-              <div></div>
-            </div>
-            <div id="zipcode-input-container">
-              <span>Enter ZIP codes, seperated by comma:</span>
-              <div class="add-top-margin-small add-bottom-margin">
-                <input id="zipcode-input" class="custom-textbox" type="text" placeholder="e.g. 15213,15217">
-              </div>
-            </div>
-            <span>Select a timezone:</span>
-            <div class="custom-dropdown large add-top-margin-small add-bottom-margin" id="timezone-dropdown">
-              <a tabindex="0" href="javascript:void(0)"><span></span></a>
-              <div></div>
-            </div>
-            <span>Select a time range:</span>
-            <div class="add-top-margin-small add-bottom-margin">
-              <input type="text" id="from-time-input" name="from" class="custom-textbox">
-              <label for="to-time-input" id="to-time-txt">to</label>
-              <input type="text" id="to-time-input" name="to" class="custom-textbox">
-              <div class="add-top-margin-small flex-row">
-                <input type="checkbox" id="all-time-checkbox">
-                <label for="all-time-checkbox" id="all-time-time-txt">All dates</label>
-              </div>
-            </div>
-            <div id="download-button-container">
-              <span>Download data in csv format:</span>
-              <div class="control-group">
-                <a class="custom-button custom-button-primary" id="download-button">Download Smell Reports</a>
-              </div>
-            </div>
             <p class="text">
-              Looking for a more specific data query? Visit <a target="_blank" href="https://github.com/CMU-CREATE-Lab/smell-pittsburgh-rails/wiki/Welcome-to-Smell-PGH-API">Smell PGH API</a> to learn more about our API.
+              All submitted reports are anonymized to protect your privacy.
+              Only the essential information such as the image, location, and description of the deforestation activity are shared with the authorities.
             </p>
-            <h2>Smell Report Highlight Reel</h2>
+            <p class="text">
+              Once the information is entered, submit the report.
+              Your report is then pulled together to include the location (based on the GPS location of your mobile device), date, time, and description (if provided).
+              This data is then reviewed by local authorities for appropriate action.
+            </p>
+          </div>
+          <div class="flex-item flex-item-stretch flex-column">
+            <img class="image" src="img/report_deforestation.jpg">
+          </div>
+        </div>
+        <div class="flex-row">
+          <div class="flex-item flex-column">
+            <h2>Visualize Reports</h2>
             <hr>
-            <p class="text">
-              The following video animates the daily summary of smell reports. Each frame in the video represents one day.
+            <p class="text-small-margin">
+              At the same time your report is added to the public interactive map visualization.
+              An icon shows the location of the reported deforestation activity.
+              Your location is obscured on the map by slightly shifting the coordinates to protect your privacy.
+              Tapping a report icon on the map will show the details of the report, including the date, time, and description (if provided).
+              No personally identifiable information is shown on the map.
             </p>
-            <video muted playsinline controls class="image">
-              <source src="vid/smellpgh2017.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
+            <p class="text-small-margin">
+              In addition, the map allows you to view other reports and actions taken by local authorities.
+              This helps keep the community informed and engaged in protecting the environment.
+            </p>
+            <p class="text-small-margin add-bottom-margin">
+              The bottom of the visualization features a timeline where you can select different dates to explore and compare.
+              The color coding indicates the severity of the deforestation activities reported.
+            </p>
+          </div>
+          <div class="flex-item flex-item-stretch flex-column">
+            <img class="image" src="img/map_visualization.jpg">
           </div>
         </div>
       </div>

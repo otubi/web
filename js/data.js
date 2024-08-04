@@ -16,7 +16,7 @@
     };
 
     // Get city names and ids
-    var city_names = ["Pittsburgh", "ZIP Code"];
+    var city_names = ["Eco guardian", "ZIP Code"];
     var city_ids = [1, -1];
 
     // Set region UI
